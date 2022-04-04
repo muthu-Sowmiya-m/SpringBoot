@@ -3,7 +3,7 @@ package com.Springboot.Service;
 import java.util.*;
 
 import com.Springboot.Controller.Topics;
-//import com.Springboot.Exception.BusinessException;
+import com.Springboot.Exception.ServiceException;
 import org.springframework.stereotype.Service;
 
 
@@ -22,7 +22,12 @@ List <Topics> topics = new ArrayList<>(Arrays.asList(
 
     public Topics getTopic(String id)
     {
-
+        int i = Integer.valueOf(id);
+        if (i == 0 || i > 10)
+        {
+            throw new ServiceException("The id is invalid..Use a valid id!!");
+            //return ResponseEntity.badRequest().body("No records found");
+        }
         return topics.stream().filter(t -> t.getid().equals(id)).findFirst().get();
     }
 

@@ -1,6 +1,7 @@
 package com.Springboot.Controller;
 import java.util.*;
 
+import com.Springboot.Exception.ServiceException;
 import com.Springboot.Service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,15 +26,8 @@ class TopicController {
     {
         ResponseEntity<Topics> response = null;
         Topics gettopic;
-        int i = Integer.valueOf(id);
-        if (i == 0 || i > 10)
-        {
-            return ResponseEntity.badRequest().body("No records found");
-        }
-        else {
-            gettopic = topicservice.getTopic(id);
-           return ResponseEntity.ok().body(gettopic);
-        }
+        gettopic = topicservice.getTopic(id);
+        return ResponseEntity.ok().body(gettopic);
     }
 
     @PostMapping(value = "/topics",produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE},consumes = {MediaType.APPLICATION_JSON_VALUE})
