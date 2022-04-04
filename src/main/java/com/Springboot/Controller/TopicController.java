@@ -43,14 +43,14 @@ class TopicController {
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
-    @RequestMapping(method = RequestMethod.PUT,value = "/topics/{id}")
+    @PutMapping(value = "/topics/{id}")
     public ResponseEntity<Void> updateTopic(@RequestBody Topics topic,@PathVariable String id)
     {
         topicservice.updateTopic(id,topic);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE,value = "/topics/{id}")
+    @DeleteMapping(value = "/topics/{id}")
     public ResponseEntity<Void> deleteTopic(@PathVariable String id)
     {
         topicservice.deleteTopic(id);
