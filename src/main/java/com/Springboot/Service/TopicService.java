@@ -1,7 +1,11 @@
-package com.Springboot.topic;
+package com.Springboot.Service;
 
 import java.util.*;
+
+import com.Springboot.Controller.Topics;
+//import com.Springboot.Exception.BusinessException;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class TopicService
@@ -18,6 +22,7 @@ List <Topics> topics = new ArrayList<>(Arrays.asList(
 
     public Topics getTopic(String id)
     {
+
         return topics.stream().filter(t -> t.getid().equals(id)).findFirst().get();
     }
 

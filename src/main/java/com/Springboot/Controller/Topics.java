@@ -1,7 +1,10 @@
-package com.Springboot.topic;
+package com.Springboot.Controller;
+
+import org.jetbrains.annotations.NotNull;
 
 public class Topics
 {
+    @NotNull("Id can not be null")
     private String id;
     private String name;
     private String desc;
